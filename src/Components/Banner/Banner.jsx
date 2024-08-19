@@ -9,21 +9,22 @@ const images = [img1, img2, img3, img4];
 
 const Banner = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const handlePrevSlide=()=>{
+    const prevSlide=currentSlide===0? images.length-1 : currentSlide-1;
+    setCurrentSlide(prevSlide)
+  }
 
-  const handlePrevSlide = () => {
-    const prevSlide = currentSlide === 0 ? images.length - 1 : currentSlide - 1;
-    setCurrentSlide(prevSlide);
-  };
-
-  const handleNextSlide = () => {
-    const nextSlide = currentSlide === images.length - 1 ? 0 : currentSlide + 1;
-    setCurrentSlide(nextSlide);
-  };
+  const handleNextSlide=()=>{
+    const nextSlide=currentSlide===images.length-1 ? 0 : currentSlide+1;
+    setCurrentSlide(nextSlide)
+  }
 
   return (
     <div
       className="grid grid-cols-4 bg-cover bg-center w-full md:h-[600px] border rounded shadow-lg gap-2 p-4 font-poppins mb-12"
-      style={{ backgroundImage: `url(${images[currentSlide]})` }}
+      // style={{ backgroundImage: `url(${images[currentSlide]})` }}
+      style={ {backgroundImage: `url(${images[currentSlide]})`}
+      }
     >
       <div className="col-span-3 flex items-start text-white gap-y-2 flex-col justify-center bg-gradient-to-r from-[#151515] to-[rgpba(21,21,21,0.00)]">
         <h2 className="text-3xl md:text-6xl font-bold flex flex-col gap-y-2">

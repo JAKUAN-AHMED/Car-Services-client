@@ -1,7 +1,15 @@
 import { NavLink } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import logo from '../../../assets/logo.svg';
+import { useContext } from "react";
+import { AuthContext } from "../../../Utility/Provider/ProviderContext";
 const Navbar = () => {
+  const {User,LogOut}=useContext(AuthContext);
+  const handleLogOut=()=>{
+    LogOut()
+    .then(()=>{})
+    .catch(error=>console.error(error.message))
+  }
     const links=<>
     <li>
         <NavLink to={'/'}>Home</NavLink>
@@ -9,6 +17,16 @@ const Navbar = () => {
     <li>
         <NavLink to={'/about'}>About</NavLink>
     </li>
+    {User?.email?
+    <>
+    <li><NavLink to={'/bookings'}>My Bookings</NavLink></li>
+    <li><button onClick={handleLogOut}>Log Out</button></li>
+    </> 
+    :
+    <li>
+      <NavLink to={'/login'}>Login</NavLink>
+    </li>}
+    
     </>
     return (
       <div className="navbar bg-base-100">
@@ -50,7 +68,7 @@ const Navbar = () => {
             <a className="btn border-t-green-300 bg-slate-100 pl-2">
                 <CiSearch className="text-2xl font-extrabold"></CiSearch>
             </a>
-          <a className="btn btn-square bg-yellow-200 text-black w-[100px] h-[50px]">Appointment</a>
+          <a className="btn btn-square bg-yellow-200 text-black w-[100px] h-[50px]p-1">Appointment</a>
         </div>
       </div>
     );

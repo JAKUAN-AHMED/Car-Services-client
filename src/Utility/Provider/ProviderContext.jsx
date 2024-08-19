@@ -1,10 +1,10 @@
 import {
   getAuth,
-  createUserWithEmailAndPassword,
+  createUserWithEmailAndPassword, 
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
-  signInWithPopup,
+  signInWithPopup, 
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";

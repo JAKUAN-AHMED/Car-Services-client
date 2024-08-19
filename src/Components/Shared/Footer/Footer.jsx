@@ -1,13 +1,12 @@
 import img1 from '../../../assets/logo.svg'
 const Footer = () => {
     return (
-      <footer className="footer bg-base-200 text-base-content p-10">
+      <footer className="footer bg-base-200 text-base-content p-10 border-t-2 border-t-orange-600">
         <aside>
           <img src={img1} alt="" />
-          <p>
-            ACME Industries Ltd.
-            <br />
-            Providing reliable tech since 1992
+          <p className='w-56'>
+            Edwin Diaz is a software and web technologies engineer, a life coach
+            trainer who is also a serial .
           </p>
         </aside>
         <nav>
