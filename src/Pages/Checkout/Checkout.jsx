@@ -1,11 +1,10 @@
-import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
-import { AuthContext } from "../../Utility/Provider/ProviderContext";
+import useAuth from "../../hooks/useAuth";
 const Checkout = () => {
   const service = useLoaderData();
   const { title,price,_id,img} = service;
   console.log(service);
-  const {User}=useContext(AuthContext);
+  const {User}=useAuth();
   const handleBook=e=>{
     e.preventDefault();
     const form=e.target;

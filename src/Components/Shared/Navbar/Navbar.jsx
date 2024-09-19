@@ -1,10 +1,9 @@
 import { NavLink } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import logo from '../../../assets/logo.svg';
-import { useContext } from "react";
-import { AuthContext } from "../../../Utility/Provider/ProviderContext";
+import useAuth from "../../../hooks/useAuth";
 const Navbar = () => {
-  const {User,LogOut}=useContext(AuthContext);
+  const {User,LogOut}=useAuth();
   const handleLogOut=()=>{
     LogOut()
     .then(()=>{})

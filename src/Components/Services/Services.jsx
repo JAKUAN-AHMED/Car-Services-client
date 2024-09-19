@@ -1,13 +1,8 @@
-import { useEffect, useState } from "react";
 import Card1 from "../../Cards/Card1/Card1";
-
+import useServices from "../../hooks/useServices";
 const Services = () => {
-    const [Data,setData]=useState([]);
-    useEffect(()=>{
-        fetch("http://localhost:5000/services")
-          .then((res) => res.json())
-          .then((data) => setData(data));
-    },[])
+  //fetch services
+    const Data=useServices();
     return (
       <div className="flex flex-col mt-4 mb-12">
         <div className="flex flex-col space-y-4 text-center">

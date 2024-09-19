@@ -8,6 +8,7 @@ import Services from "../../Components/Services/Services";
 import Bookings from "../../Pages/Bookings/Bookings";
 import PrivateRoute from "./PrivateRoutes/PrivateRoute";
 import Error from "../../Pages/ErrroPage/Error";
+import About from "../../Components/About/About";
 const router = createBrowserRouter([
   {
     path: "",
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "/service",
         element: <Services></Services>,
+      },
+      {
+        path: "/about",
+        element: <About></About>,
       },
       {
         path: "/bookings",

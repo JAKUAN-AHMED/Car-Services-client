@@ -1,10 +1,9 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import login from "../../assets/images/login/login.svg";
-import { useContext } from "react";
-import { AuthContext } from "../../Utility/Provider/ProviderContext";
-import axios from "axios";
+import useAuth from "../../hooks/useAuth";
 const Login = () => {
-  const { LogIn } = useContext(AuthContext);
+  // const { LogIn } = useContext(AuthContext);
+  const {LogIn}=useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const handleLogin = (e) => {
@@ -15,18 +14,10 @@ const Login = () => {
     //singIn
     LogIn(email, password)
       .then((result) => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
-        const user = { email };
-        //get access token
-        axios
-          .post("http://localhost:5000/jwt", user, { withCredentials: true })
-          .then((res) => {
-            console.log(res.data);
-            if (res.data.success) {
+              const user=result.user;
+              console.log('created user',user);
               navigate(location?.state ? location.state : "/");
-            }
-          });
+           
       })
       .catch((error) => console.log(error.message));
   };
