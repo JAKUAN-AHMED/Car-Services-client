@@ -1,37 +1,31 @@
 import { useLoaderData } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import { axiosSecure } from "../../hooks/useAxiosSecure";
 const Checkout = () => {
   const service = useLoaderData();
-  const { title,price,_id,img} = service;
+  const { title, price, _id, img } = service;
   console.log(service);
-  const {User}=useAuth();
-  const handleBook=e=>{
+  const { User } = useAuth();
+  const handleBook = (e) => {
     e.preventDefault();
-    const form=e.target;
-    const name=form.name.value;
-    const email=form.email.value;
-    const date=form.date.value;
-    const booking={
-        CustomerName:name,
-        email,
-        price,
-        date,
-        img,
-        service_id:_id,
-        service:title,
-      }
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const date = form.date.value;
+    const priceInt = parseInt(price);
+    const booking = {
+      CustomerName: name,
+      email,
+      price: priceInt,
+      date,
+      img,
+      service_id: _id,
+      service: title,
+    };
     console.log(booking);
     //data post to server
-    fetch("http://localhost:5000/bookings", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json", // Corrected here
-      },
-      body: JSON.stringify(booking),
-    })
-    .then((res) => res.json())
-    .then((data) => console.log(data));
-  }
+    axiosSecure.post("/bookings").then((data) => console.log(data));
+  };
   return (
     <div className="overflow-hidden pr-8 max-w-6xl mx-auto">
       <div>

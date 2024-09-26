@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import useAxiosSecure from "./useAxiosSecure";
+import { axiosSecure } from "./useAxiosSecure";
 
-const useServices = () => {
+const useServices = (asc,search) => {
    const [Data,setData]=useState([]);
-   const axiosSecure=useAxiosSecure();
+   // const axiosSecure=useAxiosSecure();
    useEffect(()=>{
-    axiosSecure.get("/services")
+    axiosSecure(`/services?sort=${asc? 'asc':'desc'}&search=${search}`)
     .then((res) => setData(res.data));
-   },[axiosSecure])
+   },[asc,search])
    return Data;
 };
 
